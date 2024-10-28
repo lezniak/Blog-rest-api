@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+
 @Service
 public class PostServiceImplementation implements PostService {
     private PostRepository postRepository;
@@ -24,5 +28,11 @@ public class PostServiceImplementation implements PostService {
 
         PostDto newPostDto = createdPost.convert();
         return newPostDto;
+    }
+
+    @Override
+    public List<PostDto> getAllPosts() {
+        List<Post> postsList = postRepository.findAll();
+        return postsList.stream().map(Post::convert).toList();
     }
 }
