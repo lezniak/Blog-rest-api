@@ -10,8 +10,7 @@ import lombok.Setter;
 
 import java.util.Date;
 
-@Getter
-@Setter
+@Data
 @MappedSuperclass
 public class AuditableEntity {
     @EqualsAndHashCode.Exclude
