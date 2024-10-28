@@ -1,6 +1,7 @@
 package com.springboot.blog.blog_rest_api.controller;
 
 import com.springboot.blog.blog_rest_api.dto.PostDto;
+import com.springboot.blog.blog_rest_api.exception.ResourceNotFoundException;
 import com.springboot.blog.blog_rest_api.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,5 +29,11 @@ public class PostController {
     @GetMapping
     private ResponseEntity<List<PostDto>> getAllPosts(){
         return ResponseEntity.ok(postService.getAllPosts());
+    }
+
+    @PostMapping
+    @RequestMapping("pos{id}")
+    private ResponseEntity<PostDto> getPostById(@PathVariable(name = "id") Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(postService.getPost(id));
     }
 }
