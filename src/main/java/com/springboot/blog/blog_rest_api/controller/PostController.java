@@ -1,8 +1,10 @@
 package com.springboot.blog.blog_rest_api.controller;
 
 import com.springboot.blog.blog_rest_api.dto.PostDto;
+import com.springboot.blog.blog_rest_api.dto.PostResponse;
 import com.springboot.blog.blog_rest_api.exception.ResourceNotFoundException;
 import com.springboot.blog.blog_rest_api.service.PostService;
+import com.springboot.blog.blog_rest_api.utils.AppConstrants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +30,13 @@ public class PostController {
     }
 
     @GetMapping
-    private ResponseEntity<List<PostDto>> getAllPosts(){
-        return ResponseEntity.ok(postService.getAllPosts());
+    private ResponseEntity<PostResponse> getAllPosts(
+            @RequestParam(value = "pageNo", defaultValue = AppConstrants.DEFAULT_PAGE_NUM,required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = AppConstrants.DEFAULT_PAGE_SIZE,required = false) int pageSize,
+            @RequestParam(value = "sortBy",defaultValue = AppConstrants.DEFAULT_PAGE_SIZE, required = false) String sortBy,
+            @RequestParam(value = "sortDir", defaultValue = AppConstrants.DEFAULT_SORT_DIR,required = false) String sortDir
+    ){
+        return ResponseEntity.ok(postService.getAllPosts(pageNo,pageSize,sortBy,sortDir));
     }
 
     @PostMapping
