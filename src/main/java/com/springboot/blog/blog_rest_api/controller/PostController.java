@@ -5,17 +5,15 @@ import com.springboot.blog.blog_rest_api.dto.post.PostResponse;
 import com.springboot.blog.blog_rest_api.exception.ResourceNotFoundException;
 import com.springboot.blog.blog_rest_api.service.PostService;
 import com.springboot.blog.blog_rest_api.utils.AppConstrants;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/posts")
+@AllArgsConstructor
 public class PostController {
-
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
 
     private PostService postService;
 

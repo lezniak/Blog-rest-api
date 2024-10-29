@@ -1,5 +1,7 @@
 package com.springboot.blog.blog_rest_api.model;
 
+import com.springboot.blog.blog_rest_api.dto.comment.CommentDto;
+import com.springboot.blog.blog_rest_api.dto.post.PostDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,4 +28,14 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id",nullable = false)
     private Post post;
+
+    public CommentDto convert(){
+        CommentDto commentDto = new CommentDto();
+        commentDto.setBody(getBody());
+        commentDto.setId(getId());
+        commentDto.setName(getName());
+        commentDto.setEmail(getEmail());
+
+        return commentDto;
+    }
 }
