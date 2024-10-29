@@ -1,4 +1,4 @@
-package com.springboot.blog.blog_rest_api.dto;
+package com.springboot.blog.blog_rest_api.dto.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

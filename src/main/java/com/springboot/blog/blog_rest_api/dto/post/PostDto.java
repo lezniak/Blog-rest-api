@@ -1,4 +1,4 @@
-package com.springboot.blog.blog_rest_api.dto;
+package com.springboot.blog.blog_rest_api.dto.post;
 
 import com.springboot.blog.blog_rest_api.model.Post;
 import lombok.Data;

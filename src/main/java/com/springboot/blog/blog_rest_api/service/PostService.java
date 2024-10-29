@@ -1,7 +1,7 @@
 package com.springboot.blog.blog_rest_api.service;
 
-import com.springboot.blog.blog_rest_api.dto.PostDto;
-import com.springboot.blog.blog_rest_api.dto.PostResponse;
+import com.springboot.blog.blog_rest_api.dto.post.PostDto;
+import com.springboot.blog.blog_rest_api.dto.post.PostResponse;
 import com.springboot.blog.blog_rest_api.exception.ResourceNotFoundException;
 
 public interface PostService {

@@ -1,8 +1,11 @@
 package com.springboot.blog.blog_rest_api.model;
 
-import com.springboot.blog.blog_rest_api.dto.PostDto;
+import com.springboot.blog.blog_rest_api.dto.post.PostDto;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -25,6 +28,9 @@ public class Post extends AuditableEntity {
     private String description;
     @Column(name = "content",nullable = false)
     private String content;
+
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Comment> comments = new HashSet<>();
 
 
     public PostDto convert(){

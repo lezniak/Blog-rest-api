@@ -1,17 +1,13 @@
 package com.springboot.blog.blog_rest_api.controller;
 
-import com.springboot.blog.blog_rest_api.dto.PostDto;
-import com.springboot.blog.blog_rest_api.dto.PostResponse;
+import com.springboot.blog.blog_rest_api.dto.post.PostDto;
+import com.springboot.blog.blog_rest_api.dto.post.PostResponse;
 import com.springboot.blog.blog_rest_api.exception.ResourceNotFoundException;
 import com.springboot.blog.blog_rest_api.service.PostService;
 import com.springboot.blog.blog_rest_api.utils.AppConstrants;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("api/posts")
