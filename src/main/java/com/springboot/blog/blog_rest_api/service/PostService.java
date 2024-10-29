@@ -9,4 +9,6 @@ public interface PostService {
     PostDto createPost(PostDto postDto);
     List<PostDto> getAllPosts();
     PostDto getPost(Long id) throws ResourceNotFoundException;
+    PostDto updatePostById(PostDto postDto,Long id) throws ResourceNotFoundException;
+    void deletePostById(Long id) throws ResourceNotFoundException;
 }

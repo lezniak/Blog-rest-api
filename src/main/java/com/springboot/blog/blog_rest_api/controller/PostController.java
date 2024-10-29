@@ -4,6 +4,7 @@ import com.springboot.blog.blog_rest_api.dto.PostDto;
 import com.springboot.blog.blog_rest_api.exception.ResourceNotFoundException;
 import com.springboot.blog.blog_rest_api.service.PostService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +33,22 @@ public class PostController {
     }
 
     @PostMapping
-    @RequestMapping("pos{id}")
+    @RequestMapping("{id}")
     private ResponseEntity<PostDto> getPostById(@PathVariable(name = "id") Long id) throws ResourceNotFoundException {
         return ResponseEntity.ok(postService.getPost(id));
     }
+
+    @PutMapping
+    @RequestMapping("update/{id}")
+    private ResponseEntity<PostDto> updatePostById(@RequestBody PostDto postDto,@PathVariable(name = "id") Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(postService.updatePostById(postDto,id));
+    }
+
+    @DeleteMapping
+    @RequestMapping("delete/{id}")
+    private ResponseEntity<String> deletePostById(@PathVariable(name = "id") Long id) throws ResourceNotFoundException {
+        postService.deletePostById(id);
+        return new ResponseEntity<>("Deleted", HttpStatus.OK);
+    }
+
 }

@@ -36,4 +36,21 @@ public class PostServiceImplementation implements PostService {
         Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Post","id",id));
         return post.convert();
     }
+
+    @Override
+    public PostDto updatePostById(PostDto postDto, Long id) throws ResourceNotFoundException {
+        Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Post","id",id));
+        post.setTittle(postDto.getTittle());
+        post.setDescription(postDto.getDesc());
+        post.setContent(postDto.getContent());
+
+        Post updatedPost = postRepository.save(post);
+        return updatedPost.convert();
+    }
+
+    @Override
+    public void deletePostById(Long id) throws ResourceNotFoundException {
+        Post post = postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Post","id",id));
+        postRepository.delete(post);
+    }
 }
